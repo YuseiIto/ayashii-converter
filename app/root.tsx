@@ -1,4 +1,5 @@
 import type { LinksFunction } from "@remix-run/cloudflare";
+import type { ReactNode } from "react";
 import {
 	Links,
 	Meta,
@@ -22,7 +23,7 @@ export const links: LinksFunction = () => [
 	},
 ];
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export function Layout({ children }: { children: ReactNode }) {
 	return (
 		<html lang="en">
 			<head>
