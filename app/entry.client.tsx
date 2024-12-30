@@ -5,17 +5,17 @@ import { initializeImageMagick } from "@imagemagick/magick-wasm";
 
 import wasmUrl from "@imagemagick/magick-wasm/magick.wasm?url";
 
-const wasmBytes = await fetch(wasmUrl).then((response) =>
-	response.arrayBuffer(),
-);
+fetch(wasmUrl).then(async (response) => {
+	const wasmBytes = await response.arrayBuffer();
 
-initializeImageMagick(wasmBytes).then(() => {
-	startTransition(() => {
-		hydrateRoot(
-			document,
-			<StrictMode>
-				<RemixBrowser />
-			</StrictMode>,
-		);
+	initializeImageMagick(wasmBytes).then(() => {
+		startTransition(() => {
+			hydrateRoot(
+				document,
+				<StrictMode>
+					<RemixBrowser />
+				</StrictMode>,
+			);
+		});
 	});
 });
